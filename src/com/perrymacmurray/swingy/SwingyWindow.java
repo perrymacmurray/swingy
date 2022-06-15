@@ -10,7 +10,7 @@ public class SwingyWindow
 
     private SwingyActionListener listener;
     private SwingyReportedEvent pendingEvent = null;
-    private boolean isWaiting;
+    private Class<? extends SwingyReportedEvent> waitingForType;
 
     private SwingyButton[][] canvas;
     private JTextArea console;
@@ -94,7 +94,7 @@ public class SwingyWindow
     }
 
     public SwingyUserInput getUserInput() {
-        isWaiting = true;
+        waitingForType = SwingyUserInput.class;
         SwingyUserInput output;
 
         while (true) {
@@ -109,13 +109,13 @@ public class SwingyWindow
             catch (InterruptedException ignored) {}
         }
 
-        isWaiting = false;
+        waitingForType = null;
         pendingEvent = null;
         return output;
     }
 
     public SwingyClick getClick() {
-        isWaiting = true;
+        waitingForType = SwingyClick.class;
         SwingyClick output;
 
         while (true) {
@@ -130,13 +130,13 @@ public class SwingyWindow
             catch (InterruptedException ignored) {}
         }
 
-        isWaiting = false;
+        waitingForType = null;
         pendingEvent = null;
         return output;
     }
 
     public SwingyReportedEvent getAnyEvent() {
-        isWaiting = true;
+        waitingForType = SwingyReportedEvent.class;
         SwingyReportedEvent output;
 
         while (true) {
@@ -151,19 +151,21 @@ public class SwingyWindow
             catch (InterruptedException ignored) {}
         }
 
-        isWaiting = false;
+        waitingForType = null;
         pendingEvent = null;
         return output;
     }
 
     protected void reportEvent(SwingyReportedEvent e) {
-        if (e == null || !isWaiting)
+        if (e == null || waitingForType == null)
             return;
 
-        if (pendingEvent != null)
-            System.err.println("Warning: inputs too fast. May have lost data!");
+        if (waitingForType.isInstance(e)) {
+            if (pendingEvent != null)
+                System.err.println("Warning: inputs too fast. May have lost data!");
 
-        pendingEvent = e;
+            pendingEvent = e;
+        }
     }
 
     private void initialize() {
