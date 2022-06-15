@@ -1,0 +1,14 @@
+plugins {
+   id 'java'
+}
+
+group 'com.perrymacmurray'
+version '1.0'
+
+sourceSets {
+   main {
+      java {
+         srcDirs = ['src']
+      }
+   }
+}
