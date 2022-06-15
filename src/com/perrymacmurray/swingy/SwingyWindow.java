@@ -229,6 +229,14 @@ public class SwingyWindow
         frame.getContentPane().add(consolePanel);
 
         frame.pack();
+
+        Dimension screen = Toolkit.getDefaultToolkit().getScreenSize();
+        if (frame.getSize().height > screen.height) {
+            int newHeight = (int) (0.9 * screen.height);
+            int newWidth = (int) (frame.getSize().width * (newHeight / (double) frame.getPreferredSize().height));
+            frame.setSize(newWidth, newHeight);
+        }
+
         frame.setVisible(true);
 
         isInitialized = true;
