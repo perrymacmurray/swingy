@@ -1,4 +1,4 @@
-package com.perry.swingy;
+package com.perrymacmurray.swingy;
 
 public class SwingyClick extends SwingyReportedEvent
 {

@@ -1,4 +1,4 @@
-package com.perry.swingy;
+package com.perrymacmurray.swingy;
 
 import javax.swing.*;
 import java.awt.*;
