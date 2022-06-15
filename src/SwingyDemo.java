@@ -12,10 +12,12 @@ public class SwingyDemo
         while (true) {
             SwingyReportedEvent e = window.getAnyEvent();
 
-            if (e instanceof SwingyClick click) {
+            if (e instanceof SwingyClick) {
+                SwingyClick click = (SwingyClick) e;
                 window.setCanvasColor(click.getX(), click.getY(), color);
             }
-            else if (e instanceof SwingyUserInput input) {
+            else if (e instanceof SwingyUserInput) {
+                SwingyUserInput input = (SwingyUserInput) e;
                 color = input.getInputString();
             }
         }

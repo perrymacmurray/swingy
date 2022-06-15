@@ -55,18 +55,41 @@ public class SwingyWindow
 
         switch (color.toLowerCase())
         {
-            case "red" -> button.setBackground(Color.RED);
-            case "green" -> button.setBackground(Color.GREEN);
-            case "blue" -> button.setBackground(Color.BLUE);
-            case "yellow" -> button.setBackground(Color.YELLOW);
-            case "purple" -> button.setBackground(new Color(112, 41, 99));
-            case "black" -> button.setBackground(Color.BLACK);
-            case "white" -> button.setBackground(Color.WHITE);
-            case "orange" -> button.setBackground(Color.ORANGE);
-            case "cyan" -> button.setBackground(Color.CYAN);
-            case "pink" -> button.setBackground(Color.PINK);
-            case "grey", "gray" -> button.setBackground(Color.GRAY);
-            default -> System.err.println("Invalid color specified");
+            case "red":
+                button.setBackground(Color.RED);
+                break;
+            case "green":
+                button.setBackground(Color.GREEN);
+                break;
+            case "blue":
+                button.setBackground(Color.BLUE);
+                break;
+            case "yellow":
+                button.setBackground(Color.YELLOW);
+                break;
+            case "purple":
+                button.setBackground(new Color(112, 41, 99));
+                break;
+            case "black":
+                button.setBackground(Color.BLACK);
+                break;
+            case "white":
+                button.setBackground(Color.WHITE);
+                break;
+            case "orange":
+                button.setBackground(Color.ORANGE);
+                break;
+            case "cyan":
+                button.setBackground(Color.CYAN);
+                break;
+            case "pink":
+                button.setBackground(Color.PINK);
+                break;
+            case "grey": case"gray":
+                button.setBackground(Color.GRAY);
+                break;
+            default:
+                System.err.println("Invalid color specified");
         }
     }
 
@@ -76,8 +99,8 @@ public class SwingyWindow
 
         while (true) {
             try {
-                if (pendingEvent != null && pendingEvent instanceof SwingyUserInput e) {
-                    output = e;
+                if (pendingEvent != null && pendingEvent instanceof SwingyUserInput) {
+                    output = (SwingyUserInput) pendingEvent;
                     break;
                 }
 
@@ -97,8 +120,8 @@ public class SwingyWindow
 
         while (true) {
             try {
-                if (pendingEvent != null && pendingEvent instanceof SwingyClick e) {
-                    output = e;
+                if (pendingEvent != null && pendingEvent instanceof SwingyClick) {
+                    output = (SwingyClick) pendingEvent;
                     break;
                 }
 

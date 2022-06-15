@@ -18,14 +18,16 @@ public class SwingyActionListener implements ActionListener
     {
         SwingyReportedEvent reportedEvent = null;
 
-        if (e.getSource() instanceof SwingyButton source) {
+        if (e.getSource() instanceof SwingyButton) {
+            SwingyButton source = (SwingyButton) e.getSource();
             SwingyClick click = new SwingyClick(source);
             click.setX(source.getXCoord());
             click.setY(source.getYCoord());
 
             reportedEvent = click;
         }
-        else if (e.getSource() instanceof JTextField source) {
+        else if (e.getSource() instanceof JTextField) {
+            JTextField source = (JTextField) e.getSource();
             SwingyUserInput input = new SwingyUserInput(source);
             input.setInput(source.getText());
 
