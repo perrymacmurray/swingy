@@ -1,6 +1,6 @@
 package com.perrymacmurray.swingy;
 
-public class SwingyReportedEvent
+public abstract class SwingyReportedEvent
 {
     private final Object source;
 
