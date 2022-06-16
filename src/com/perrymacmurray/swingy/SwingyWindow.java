@@ -33,12 +33,12 @@ public class SwingyWindow
         canvas[x][y].setText(text);
     }
 
-    public void fillCanvasRow(int x, String color) {
+    public void fillCanvasColumn(int x, String color) {
         for (int i = 0; i < CANVAS_SIZE; i++)
             setCanvasColor(x, i, color);
     }
 
-    public void fillCanvasColumn(int y, String color) {
+    public void fillCanvasRow(int y, String color) {
         for (int i = 0; i < CANVAS_SIZE; i++)
             setCanvasColor(i, y, color);
     }
